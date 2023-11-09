@@ -71,6 +71,50 @@ TD::make('Action')
 ...
 ```
 
+In Screen must use `Actionable` trait
+```php
+namespace App\Http\Controllers\Screens;
+
+use Illuminate\Http\Request;
+use Orchid\Screen\Screen;
+use Uocnv\OrchidAction\Traits\Actionable;
+
+class Idea extends Screen
+{
+    use Actionable;
+    
+    /**
+     * Fetch data to be displayed on the screen.
+     *
+     * @return array
+     */
+    public function query() : array
+    {
+        return [];
+    }
+
+    /**
+     * The name of the screen is displayed in the header.
+     *
+     * @return string|null
+     */
+    public function name(): ?string
+    {
+        return "Idea Screen";
+    }
+
+    /**
+     * The screen's layout elements.
+     *
+     * @return \Orchid\Screen\Layout[]|string[]
+     */
+    public function layout() : array
+    {
+        return [];
+    }
+}
+```
+
 ### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
