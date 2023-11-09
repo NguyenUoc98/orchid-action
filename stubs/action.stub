@@ -1,0 +1,33 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Http\Request;
+use Uocnv\OrchidAction\Action;
+use Orchid\Screen\Actions\Button;
+use Orchid\Support\Facades\Toast;
+
+class {{ class }} extends Action
+{
+    protected string $permission = 'action';
+
+    /**
+     * The button of the action.
+     *
+     * @return Button
+     */
+    public function button(): Button
+    {
+        return Button::make('Run Action')->icon('fire');
+    }
+
+    /**
+     * Perform the action on the given models.
+     *
+     * @param Request $request
+     */
+    public function handle(Request $request)
+    {
+        Toast::message('It worked!');
+    }
+}
