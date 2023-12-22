@@ -18,7 +18,7 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class ActionFinder
 {
-    protected array $manifest;
+    protected array $manifest = [];
 
     public function __construct(
         protected Filesystem $files,
@@ -90,6 +90,10 @@ class ActionFinder
      */
     public function getManifest()
     {
+        if (! is_null($this->manifest)) {
+            return $this->manifest;
+        }
+
         if (!file_exists($this->manifestPath)) {
             $this->build();
         }
