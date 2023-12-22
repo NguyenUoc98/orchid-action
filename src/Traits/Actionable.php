@@ -18,7 +18,9 @@ trait Actionable
     public function action(Request $request)
     {
         /** @var Action $action */
-        $action = app(ActionFinder::class)->find($request->query('_action'));
+        $finder = app(ActionFinder::class);
+        $action = $finder->find($request->query('_action'));
+        $action = $action ?: $finder->build()->find($request->query('_action'));
         $action = is_string($action) ? resolve($action) : $action;
 
         if (!$action->hasPermission()) {
