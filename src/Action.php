@@ -17,7 +17,7 @@ use Uocnv\OrchidAction\Requests\ActionRequest;
 
 abstract class Action
 {
-    public static function init(array $parameters): ?Button
+    public static function init(array $parameters = []): ?Button
     {
         return (new static)->getButton()?->method('action')
             ->parameters(array_merge(
